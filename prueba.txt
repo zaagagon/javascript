@@ -3,3 +3,5 @@ testiando git
 comentario 2
 
 holaa funcionando?
+
+comentario desde terminal VSC
