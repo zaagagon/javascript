@@ -7,3 +7,5 @@ console.log(salida)
 let producto =y=>y*2
 //let sum = (a, b) => a + b;
 console.log("resultado es : "+producto(5))
+
+//revisar otras funciones flechas en la rama de pruebas
