@@ -11,3 +11,6 @@ console.log("resultado es : "+producto(5))
 //revisar otras funciones flechas en la rama de pruebas
 
 let suma=(a,b)=> {return (a+b)}
+//llamado a la funcion
+
+console.log(suma(8,6))//14
