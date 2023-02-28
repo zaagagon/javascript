@@ -14,3 +14,10 @@ let suma=(a,b)=> {return (a+b)}
 //llamado a la funcion
 
 console.log(suma(8,6))//14
+
+//funcion suma
+function sumita(a,b){
+    return a+b
+}
+
+console.log(sumita(8,2))//10
