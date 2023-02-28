@@ -9,3 +9,5 @@ let producto =y=>y*2
 console.log("resultado es : "+producto(5))
 
 //revisar otras funciones flechas en la rama de pruebas
+
+let suma=(a,b)=> {return (a+b)}
