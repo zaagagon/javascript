@@ -21,3 +21,4 @@ function sumita(a,b){
 }
 
 console.log(sumita(8,2))//10
+//prueba

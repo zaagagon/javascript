@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<HTML>
+
+<HeAD>
+
+ <TITLE>EDADESGRUPODE10</TITLE>
+
+</HEAD>
+
+<BoDY onload="edadesgrupode10();">
+
+ <SCRiPT type="text/javascript">
+
+  function edadesgrupode10() {
+
+   var x;
+
+// Definir variables
+   var e = new Number();
+
+   var eda = new Number();
+
+   var cmy = new Number();
+
+   var cmn = new Number();
+
+   var amy = new Number();
+
+   var myor = new Number();
+
+   var mnor = new Number();
+
+   var p = new Number();
+
+   mnor = 200;
+
+   myor = 0;
+
+// Ingresar datos
+   var e = new Array(10);
+
+   for (x=1;x<=10;x++) {
+
+    do {
+
+     e[x-1] = prompt("Ingresa edad");
+
+       
+
+     eda = e[x-1];
+
+     if (!(eda>=1 && eda<=120)) {
+
+             alert("Error, intente de nuevo");
+
+ 
+
+     }
+
+           else{
+
+             alert("Correcto, listo edad "+x);
+
+ 
+
+     }
+
+    } while (!(eda>=1 && eda<=120));
+
+// Contar mayores y menores de edad
+    if (eda>=18) {
+     cmy = cmy+1;
+
+    } else {
+
+     cmn = cmn+1;
+
+    }
+
+// Calcular promedio de edad
+    p = (p+eda)/10;
+
+    // Contar adultos mayores
+
+    if (eda>=60) {
+
+     amy = amy+1;
+
+    }
+
+// Determinar edad más alta y más baja
+    if (eda>myor) {
+     myor = eda;
+
+    }
+
+    if (eda<mnor) {
+
+     mnor = eda;
+
+    }
+
+   }
+
+// Mostrar resultados
+   document . write("**CANTIDADES** ",'<BR/>');
+
+   document . write("Mayores de edad: ",cmy,'<BR/>');
+
+   document . write("Menores de edad: ",cmn,'<BR/>');
+
+   document . write("Adultos mayores: ",amy,'<BR/>');
+
+   document . write("Edad más alta:   ",myor,'<BR/>');
+
+   document . write("Edad más baja:   ",mnor,'<BR/>');
+
+   document . write("Promedio edad:   ",p,'<BR/>');
+
+  }
+
+ 
+
+ </SCRiPT>
+
+</BoDY>
+
+</HtML>

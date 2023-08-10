@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>JS Bin</title>
+    </head>
+    <body>
+    Digite una lista de 5 numeros: 
+    <input id="lista" type="number" />
+    <h1>El número mayor es: <span></span> </h1>
+    <h2>El número menor es: <span></span> </h2>
+    <h3>Total de números: <span></span> </h3>
+    <script>
+        let lista = document.getElementById("lista")
+        let mayor = document.querySelector("h1 span")
+        let menor = document.querySelector("h2 span")
+        let listado = document.querySelector("h3 span")
+        let concentradoNumeros = []
+        
+        lista.addEventListener("keyup", (event) => {
+          if (event.keyCode == 13) {
+            if (concentradoNumeros.length < 5) {
+              concentradoNumeros.push(lista.value)
+              lista.value = ""
+              lista.focus()
+              mayor.innerText = Math.max(...concentradoNumeros)
+              menor.innerText = Math.min(...concentradoNumeros)
+              listado.innerText = concentradoNumeros
+              alert("Dato  ingresado,  " +)
+            } else {
+              lista.disabled = true
+              lista.value = ""
+              alert("fin del programa")
+            }
+          }
+        })
+    </script>
+    </body>
+    </html>

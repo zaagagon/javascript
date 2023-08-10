@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="arregloedades();">
+    <script type="text/javascript">
+function arregloedades() {
+
+var x;
+
+// Definir variables
+var e = new Number();
+
+var edad = new Number();
+
+var mayores = new Number();
+
+var menores = new Number();
+
+var adultomayor = new Number();
+
+var edadAlta = new Number();
+
+var edadBaja = new Number();
+
+var edadPromedio = new Number();
+
+edadBaja = 0;
+
+edadAlta = 0;
+
+// Ingresar datos
+var e = new Array(10);
+
+for (x=1;x<=10;x++) {
+
+ do {
+  //necestimos almacenar en el indice 0, x-1=0
+  e[x-1] = prompt("Ingresa edad :");
+
+    
+
+  edad = e[x-1];
+
+  if (!(edad>=1 && edad<=120)) {
+
+          alert("Error edad no cumple parametros, intente de nuevo");
+
+
+
+  }
+
+        else{
+
+          alert("Ingreso de datos correcto! "+x);
+
+
+
+  }
+
+ } while (!(edad>=1 && edad<=120));
+
+// Contar mayores y menores de edadd
+ if (edad>=18) {
+  mayores = mayores+1;
+
+ } else {
+
+  menores = menores
+ }
+
+// Calcular promedio de edadd
+ edadPromedio = (edadPromedio+edad)/10;
+
+ // Contar adultos mayores
+
+ if (edad>=60) {
+
+  adultomayor = adultomayor+1;
+
+ }
+
+// Determinar edadd más alta y más baja
+ if (edad>edadAlta) {
+  edadAlta = edad;
+
+ }
+
+ if (edad<edadBaja) {
+
+  edadBaja = edad;
+
+ }
+
+}
+
+// Mostrar resultados
+document . write("**DATOS ANALIZADOS** ",'<BR/>');
+document . write("=================================",'<BR/>');
+
+document . write("Mayores de edad: ",mayores,'<BR/>');
+
+document . write("Menores de edad: ",menores,'<BR/>');
+
+document . write("Adultos mayores: ",adultomayor,'<BR/>');
+
+document . write("Edad más alta:   ",edadAlta,'<BR/>');
+
+document . write("Edad más baja:   ",edadBaja,'<BR/>');
+
+document . write("Edad Promedio edad:   ",edadPromedio,'<BR/>');
+
+}
+   </script>
+</body>
+</html>
