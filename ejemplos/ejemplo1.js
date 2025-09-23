@@ -2,3 +2,8 @@
 let nombre="Juan David"
 
 console.log(nombre);
+
+//concatenar texto con una variable usamos +
+
+console.log("Bienvenido " + nombre);
+
