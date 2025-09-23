@@ -7,3 +7,5 @@ console.log(nombre);
 
 console.log("Bienvenido " + nombre);
 
+//console.log('Hola ${nombre} bienvenido')
+console.log("hola " + nombre);
