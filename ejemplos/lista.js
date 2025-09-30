@@ -9,9 +9,9 @@
 
 //programa que imprime los numeros del 1 al 10
 
-for(let i=0 ;i<11;i++){
+for(let i=1 ;i<11;i++){
     //instrucción
-    console.log(i);
+    console.log(i + "*"+  "2" + " = "+ i*2);
     
 
 }
