@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goku | Inicio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="index.html">🟠 <span>Goku <em>y sus poderes</em></span></a>
+    <div class="menu" role="menubar">
+      <a href="index.html" role="menuitem">Inicio</a>
+      <a href="transformaciones.html" role="menuitem">Transformaciones</a>
+      <a href="tecnicas.html" role="menuitem">Técnicas</a>
+      <div class="dropdown">
+        <button aria-haspopup="true" aria-expanded="false">Personas</button>
+        <div class="dd" role="menu">
+          <a href="amigos.html" role="menuitem">Amigos</a>
+          <a href="familia.html" role="menuitem">Familia</a>
+          <a href="enemigos.html" role="menuitem">Enemigos</a>
+        </div>
+      </div>
+      <a href="origen.html" role="menuitem">Origen</a>
+    </div>
+    <button class="hamb" aria-label="Abrir menú" id="openMenu">☰</button>
+  </div>
+</nav>
+<aside id="drawer" aria-hidden="true" aria-label="Menú móvil">
+  <div class="drawer-head">
+    <strong>Menú</strong>
+    <button class="hamb" id="closeMenu" aria-label="Cerrar menú">✕</button>
+  </div>
+  <div class="drawer-links">
+    <a href="index.html">Inicio</a>
+    <a href="transformaciones.html">Transformaciones</a>
+    <a href="tecnicas.html">Técnicas</a>
+    <a href="amigos.html">Amigos</a>
+    <a href="familia.html">Familia</a>
+    <a href="enemigos.html">Enemigos</a>
+    <a href="origen.html">Origen</a>
+  </div>
+</aside>
+<div class="scrim" id="scrim"></div>
+<div class="container">
+
+  <h1>Goku y sus poderes</h1>
+  <div class="hero-slot"></div>
+  <p class="lead">Resumen de Goku, el Saiyajin criado en la Tierra. Explora sus transformaciones, técnicas, amigos, familia y enemigos.</p>
+
+  <!-- slider injected by script.js --><figure class="slider" aria-label="Galería de Goku">
+    <div class="slides" id="slides">
+      <figure class="slide"><img alt="Goku balloon, Macy's Parade 2019" src="https://upload.wikimedia.org/wikipedia/commons/f/fc/2019_Macys_Thanksgiving_Day_Parade_%2849143006393%29.jpg" /></figure>
+      <figure class="slide"><img alt="Goku balloon frontal, Macy's Parade 2019" src="https://upload.wikimedia.org/wikipedia/commons/3/36/2019_Macys_Thanksgiving_Day_Parade_%2849143011983%29.jpg" /></figure>
+      <figure class="slide"><img alt="Dragon Ball stand NYCC 2021" src="https://upload.wikimedia.org/wikipedia/commons/3/3b/2021_NYCC_pics_08.jpg" /></figure>
+    </div>
+    <small style="display:block;color:#fff;padding:6px 10px;background:rgba(0,0,0,.45)">Fotos vía <a href="https://commons.wikimedia.org/wiki/Category:Goku" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Wikimedia Commons</a>.</small>
+    <div class="ctrl">
+      <button class="btn" id="prev" aria-label="Anterior">◀</button>
+      <button class="btn" id="next" aria-label="Siguiente">▶</button>
+    </div>
+    <div class="dots" role="tablist" aria-label="Paginación" id="dots"></div>
+  </figure>
+
+  <div class="card" style="margin-top:20px">
+    <h2>Explora</h2>
+    <p>Use el menú para navegar: Transformaciones, Técnicas, Personas (Amigos/Familia/Enemigos) y Origen.</p>
+  </div>
+
+  <footer>Hecho con 💥 — Sitio multi‑página, responsivo y accesible.</footer>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
