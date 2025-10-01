@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Goku y sus poderes</title>
+  <style>
+    :root{
+      --bg:#fde7c8;         /* fondo cálido */
+      --card:#fff7eb;       /* tarjetas */
+      --ink:#2b2b2b;        /* texto */
+      --brand:#e67e22;      /* acento */
+      --brand-2:#d35400;    /* acento oscuro */
+      --muted:#7a6f66;      /* texto secundario */
+      --ring:rgba(230,126,34,.35);
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--ink);background:var(--bg)}
+
+    /* ====== NAVBAR ====== */
+    .nav{
+      position:sticky;top:0;z-index:50;background:rgba(253,231,200,.85);
+      backdrop-filter:saturate(1.4) blur(6px);
+      border-bottom:1px solid #f1d7b6;
+    }
+    .nav .wrap{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.2px}
+    .brand em{font-style:normal;color:var(--brand-2)}
+    .nav a{color:var(--ink);text-decoration:none;font-weight:600}
+    .menu{display:flex;gap:18px}
+    .menu a{padding:8px 10px;border-radius:10px}
+    .menu a:hover,.menu a:focus{outline:none;background:#ffe8cf;box-shadow:0 0 0 4px var(--ring)}
+    .hamb{display:none}
+
+    /* ====== HERO + SLIDER ====== */
+    .hero{max-width:1100px;margin:18px auto; padding:0 16px}
+    .hero h1{font-size:clamp(28px,4vw,44px);text-align:center;margin:12px 0 18px}
+    .lead{max-width:980px;margin:0 auto 18px;text-align:center;color:var(--muted)}
+
+    .slider{position:relative;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.08);}
+    .slides{display:flex;width:100%;height:min(56vh,520px);}
+    .slides img{width:100%;object-fit:cover}
+    .slide{min-width:100%;height:100%}
+
+    .ctrl{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 8px;pointer-events:none}
+    .btn{pointer-events:auto;border:none;background:rgba(0,0,0,.35);color:white;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:18px;cursor:pointer}
+    .btn:hover{background:rgba(0,0,0,.55)}
+
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.9);cursor:pointer}
+    .dot[aria-current="true"]{background:white}
+
+    /* ====== SECTIONS ====== */
+    section{max-width:1100px;margin:32px auto;padding:0 16px}
+    .card{background:var(--card);border:1px solid #f2dfc8;border-radius:18px;box-shadow:0 5px 18px rgba(0,0,0,.05);padding:22px}
+    h2{font-size:clamp(22px,3.2vw,32px);margin:0 0 12px;color:var(--brand-2)}
+    ul.clean{padding-left:18px;margin:8px 0 0}
+    .note{font-size:.9rem;color:var(--muted)}
+
+    .grid{display:grid;gap:16px}
+    @media (min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+
+    /* ====== TOP BTN ====== */
+    .top{position:fixed;right:12px;bottom:12px;display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--brand);color:white;border:none;box-shadow:0 10px 18px rgba(0,0,0,.16);cursor:pointer}
+    .top:hover{background:var(--brand-2)}
+
+    /* ====== FOOTER ====== */
+    footer{max-width:1100px;margin:26px auto 50px;padding:0 16px;text-align:center;color:var(--muted)}
+
+    /* ====== MOBILE MENU ====== */
+    @media (max-width:760px){
+      .menu{display:none}
+      .hamb{display:inline-grid;place-items:center;border:none;background:#ffe8cf;padding:10px;border-radius:10px}
+      #drawer{position:fixed;inset:0 0 auto auto;width:min(86%,320px);height:100vh;background:var(--card);box-shadow:-8px 0 24px rgba(0,0,0,.25);transform:translateX(110%);transition:transform .28s ease;z-index:60}
+      .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #f0d9b8}
+      .drawer-links{display:flex;flex-direction:column;padding:12px}
+      .drawer-links a{padding:12px;border-radius:10px;margin-bottom:4px}
+      .drawer-links a:hover{background:#ffe8cf}
+      .scrim{position:fixed;inset:0;background:rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:opacity .25s}
+      .scrim.show{opacity:1;pointer-events:auto}
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <nav class="nav" aria-label="Principal">
+    <div class="wrap">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">🟠 <span>Goku <em>y sus poderes</em></span></a>
+      <div class="menu" role="menubar">
+        <a href="#inicio" role="menuitem">Inicio</a>
+        <a href="#transformaciones" role="menuitem">Transformaciones</a>
+        <a href="#tecnicas" role="menuitem">Técnicas</a>
+        <a href="#top10" role="menuitem">Top 10</a>
+        <a href="#enlaces" role="menuitem">Enlaces</a>
+      </div>
+      <button class="hamb" aria-label="Abrir menú" id="openMenu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Drawer móvil -->
+  <aside id="drawer" aria-hidden="true" aria-label="Menú móvil">
+    <div class="drawer-head">
+      <strong>Menú</strong>
+      <button class="hamb" id="closeMenu" aria-label="Cerrar menú">✕</button>
+    </div>
+    <div class="drawer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#transformaciones">Transformaciones</a>
+      <a href="#tecnicas">Técnicas</a>
+      <a href="#top10">Top 10</a>
+      <a href="#enlaces">Enlaces</a>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ===== HERO / SLIDER ===== -->
+  <header class="hero" id="inicio">
+    <h1>Goku y sus poderes</h1>
+    <p class="lead">Goku, también llamado Kakarotto, es un Saiyajin criado en la Tierra. A lo largo de su vida ha alcanzado niveles de poder inimaginables como <strong>Super Saiyajin</strong> y <strong>Ultra Instinto</strong>, enfrentando a enemigos como Freezer, Cell, Majin Buu y Jiren.</p>
+
+    <div class="slider" aria-label="Galería de Goku">
+      <div class="slides" id="slides">
+        <!-- Reemplace las URLs por sus imágenes preferidas -->
+        <figure class="slide"><img alt="Goku transformaciones" src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=1600&auto=format&fit=crop" /></figure>
+        <figure class="slide"><img alt="Goku héroe" src="goku_poderes.jpg" /></figure>
+        <figure class="slide"><img alt="Poder de ki" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600&auto=format&fit=crop" /></figure>
+      </div>
+      <div class="ctrl">
+        <button class="btn" id="prev" aria-label="Anterior">◀</button>
+        <button class="btn" id="next" aria-label="Siguiente">▶</button>
+      </div>
+      <div class="dots" role="tablist" aria-label="Paginación" id="dots"></div>
+    </div>
+  </header>
+
+  <!-- ===== CONTENT ===== -->
+  <section id="transformaciones" class="card">
+    <h2>Transformaciones</h2>
+    <div class="grid">
+      <div>
+        <ul class="clean">
+          <li>Base (Saiyajin)</li>
+          <li>Kaio-ken (x2, x3, x10, x20)</li>
+          <li>Super Saiyajin (SSJ)</li>
+          <li>Super Saiyajin 2 (SSJ2)</li>
+          <li>Super Saiyajin 3 (SSJ3)</li>
+          <li>Super Saiyajin God (SSG)</li>
+          <li>Super Saiyajin Blue (SSGSS / Blue)</li>
+          <li>Blue + Kaio-ken</li>
+          <li>Ultra Instinto Sign (Omen)</li>
+          <li>Ultra Instinto (Dominado / Mastered)</li>
+        </ul>
+      </div>
+      <div>
+        <p class="note">Notas: algunas formas consumen mucha energía o requieren entrenamiento divino.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tecnicas" class="card">
+    <h2>Poderes / Técnicas</h2>
+    <ul class="clean">
+      <li>Kamehameha</li>
+      <li>Genki Dama (Spirit Bomb)</li>
+      <li>Teletransportación (Shunkan Ido / Instant Transmission)</li>
+      <li>Ráfagas de ki, vuelo y detección de ki</li>
+      <li>Puño del Dragón (Dragon Fist)</li>
+      <li>Shield de Ki / Aumentos temporales de poder</li>
+      <li>Entrenamiento con dioses (Whis, Beerus): mejora reflejos y control del ki</li>
+    </ul>
+  </section>
+
+  <section id="top10" class="card">
+    <h2>Top 10 momentos / enemigos</h2>
+    <ol class="clean">
+      <li>Derrota a Freezer en Namek.</li>
+      <li>Aprende y domina el Ultra Instinto.</li>
+      <li>Fusión para Gogeta / Vegetto.</li>
+      <li>Victoria sobre Majin Buu (Kid Buu).</li>
+      <li>Batalla con Cell en la saga de los Androides.</li>
+      <li>Supera sus límites con Kaio-ken x20.</li>
+      <li>Torneo del Poder: combate contra Jiren.</li>
+      <li>Entrenamiento con Whis y Beerus.</li>
+      <li>Goku vs. Black Goku / Zamasu.</li>
+      <li>Primer Kamehameha contra Jackie Chun.</li>
+    </ol>
+  </section>
+
+  <section id="enlaces" class="card">
+    <h2>Enlaces útiles</h2>
+    <p class="note">Sustituya por sus fuentes preferidas o páginas del proyecto:</p>
+    <ul class="clean">
+      <li><a href="#inicio">Volver al inicio</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    Hecho con 💥 por usted — Diseño responsivo, accesible y sin dependencias externas.
+  </footer>
+
+  <button class="top" id="goTop" aria-label="Volver arriba">↑</button>
+
+  <script>
+    // ====== Slider simple, accesible, con auto-play ======
+    const slides = document.getElementById('slides');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dots = document.getElementById('dots');
+    const total = slides.children.length;
+    let index = 0; let timer;
+
+    function go(i){
+      index = (i + total) % total;
+      slides.style.transform = `translateX(${-index*100}%)`;
+      [...dots.children].forEach((d,di)=>d.setAttribute('aria-current', di===index));
+      restart();
+    }
+    function restart(){ clearInterval(timer); timer=setInterval(()=>go(index+1), 5000) }
+
+    // Crear dots
+    for(let i=0;i<total;i++){
+      const d=document.createElement('button');
+      d.className='dot'; d.setAttribute('aria-label',`Ir a la imagen ${i+1}`);
+      d.addEventListener('click',()=>go(i));
+      dots.appendChild(d);
+    }
+    go(0);
+
+    prev.addEventListener('click',()=>go(index-1));
+    next.addEventListener('click',()=>go(index+1));
+
+    // Pausar al pasar el mouse (mejora UX)
+    slides.addEventListener('mouseenter',()=>clearInterval(timer));
+    slides.addEventListener('mouseleave',restart);
+
+    // ====== Botón subir ======
+    const goTop = document.getElementById('goTop');
+    goTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // ====== Menú móvil ======
+    const openMenu=document.getElementById('openMenu');
+    const closeMenu=document.getElementById('closeMenu');
+    const drawer=document.getElementById('drawer');
+    const scrim=document.getElementById('scrim');
+    function showDrawer(show){
+      drawer.style.transform = show?'translateX(0)':'translateX(110%)';
+      drawer.setAttribute('aria-hidden', !show);
+      scrim.classList.toggle('show', show);
+    }
+    openMenu?.addEventListener('click',()=>showDrawer(true));
+    closeMenu?.addEventListener('click',()=>showDrawer(false));
+    scrim?.addEventListener('click',()=>showDrawer(false));
+
+    // Cerrar drawer al navegar a un ancla
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>showDrawer(false)));
+  </script>
+</body>
+</html>
