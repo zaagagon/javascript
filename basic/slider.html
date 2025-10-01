@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Slider Simple</title>
+  <style>
+    .slider {
+      width: 400px;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      animation: slide 12s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: auto;
+    }
+
+    @keyframes slide {
+      0%   { transform: translateX(0); }
+      25%  { transform: translateX(-100%); }
+      50%  { transform: translateX(-200%); }
+      75%  { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slides">
+      <img src="https://wallpapers.com/images/featured/fondos-de-goku-vhm3f71ddueli0kl.jpg 
+" alt="Slide 1">
+      <img src="https://wallpapers.com/images/featured/goku-e2us8ym3rraxbnve.jpg " alt="Slide 2">
+      <img src="https://via.placeholder.com/400x250/4444ff/fff?text=Slide+3" alt="Slide 3">
+      <img src="https://via.placeholder.com/400x250/f4f444/fff?text=Slide+4" alt="Slide 4">
+    </div>
+  </div>
+</body>
+</html>
