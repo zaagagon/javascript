@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suma de dos números</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 520px; margin: 40px auto; line-height: 1.45; }
+    label { display: block; margin: 12px 0 6px; }
+    input { width: 100%; padding: 10px; font-size: 1rem; box-sizing: border-box; }
+    button { margin-top: 14px; padding: 10px 14px; font-size: 1rem; cursor: pointer; }
+    .resultado { margin-top: 16px; font-weight: 700; }
+    .error { color: #b00020; }
+  </style>
+</head>
+<body>
+  <h1>Sumador simple</h1>
+  <p>Escriba dos números y presione “Sumar”.</p>
+
+  <label for="a">Número A</label>
+  <input id="a" type="text" inputmode="decimal" placeholder="Ej: 12.5" />
+
+  <label for="b">Número B</label>
+  <input id="b" type="text" inputmode="decimal" placeholder="Ej: 7,3" />
+
+  <button id="sumar">Sumar</button>
+
+  <div id="msg" class="resultado" role="status" aria-live="polite"></div>
+
+  <script>
+    function parseNumero(valor) {
+      // Permite coma o punto como separador decimal
+      const normalizado = valor.trim().replace(',', '.');
+      const n = Number(normalizado);
+      return Number.isFinite(n) ? n : null;
+    }
+
+    function sumar() {
+      const a = parseNumero(document.getElementById('a').value);
+      const b = parseNumero(document.getElementById('b').value);
+      const msg = document.getElementById('msg');
+
+      if (a === null || b === null) {
+        msg.innerHTML = '<span class="error">Por favor ingrese números válidos.</span>';
+        return;
+      }
+      const suma = a + b;
+      msg.textContent = `Resultado: ${suma}`;
+    }
+
+    document.getElementById('sumar').addEventListener('click', sumar);
+    // Permite usar Enter desde cualquier campo
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sumar();
+    });
+  </script>
+</body>
+</html>
