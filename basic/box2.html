@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Modelo de Caja CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+    }
+
+    .box {
+      background: #f0f0f0;       /* Content */
+      padding: 30px;             /* Padding */
+      border: 20px solid #f4a460;/* Border */
+      outline: 40px solid #87cefa;/* Margin visual */
+      box-shadow: 0 0 0 30px #90ee90 inset; /* Padding visual verde */
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .labels {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    Content
+  </div>
+</body>
+</html>

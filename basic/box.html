@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Modelo de Caja CSS</title>
+  <style>
+    .margin {
+      background: #87cefa; /* azul */
+      padding: 30px;
+    }
+    .border {
+      background: #f4a460; /* naranja */
+      padding: 30px;
+      border: 2px solid #000;
+    }
+    .padding {
+      background: #90ee90; /* verde */
+      padding: 30px;
+    }
+    .content {
+      background: #f0f0f0; /* gris */
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #333;
+    }
+
+    /* Estilos de texto */
+    .label {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="margin">
+    <div class="label">Margin</div>
+    <div class="border">
+      <div class="label">Border</div>
+      <div class="padding">
+        <div class="label">Padding</div>
+        <div class="content">
+          Content
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
