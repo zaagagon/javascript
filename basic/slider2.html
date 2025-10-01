@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Slider Goku (imagen completa)</title>
+  <style>
+    :root{
+      --bg:#000;             /* color para las franjas */
+      --dot:#ffffff88; --dot-active:#fff;
+    }
+    .slider{
+      width: min(90vw, 900px);
+      aspect-ratio: 16 / 9;        /* mantiene proporción sin crecer demás */
+      margin: 24px auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--bg);
+    }
+    .track{
+      display: flex;
+      height: 100%;
+      transition: transform .4s ease;
+    }
+    .slide{
+      min-width: 100%;
+      height: 100%;
+      /* CLAVE: usar background en vez de <img> */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;    /* se ve completa la imagen */
+      background-color: var(--bg); /* relleno para márgenes */
+    }
+
+    /* Flechas */
+    .ctrl{position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none; padding:0 8px}
+    .btn{
+      pointer-events:auto; cursor:pointer; border:none; width:42px; height:42px; border-radius:50%;
+      background:#00000066; color:#fff; font-size:18px; display:grid; place-items:center;
+    }
+    .btn:hover{background:#00000099}
+
+    /* Dots */
+    .dots{position:absolute; left:50%; transform:translateX(-50%); bottom:10px; display:flex; gap:8px}
+    .dots button{width:10px; height:10px; border-radius:50%; border:1px solid #ed9393; background:var(--dot); cursor:pointer}
+    .dots button[aria-current="true"]{background:var(--dot-active)}
+
+    /* Accesibilidad básica */
+    .btn:focus, .dots button:focus{outline:3px solid #ffffff88; outline-offset:2px}
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center">Slider de Goku</h1>
+
+  <div class="slider" id="slider">
+    <div class="track" id="track">
+      <!-- Cada slide usa background-image -->
+      <div class="slide" style="background-image:url('https://wallpapers.com/images/featured/fondos-de-goku-vhm3f71ddueli0kl.jpg');"></div>
+      <div class="slide" style="background-image:url('https://wallpapers.com/images/featured/goku-e2us8ym3rraxbnve.jpg');"></div>
+      <div class="slide" style="background-image:url('https://alfabetajuega.com/hero/2025/05/captura.1748259070.1247.png?width=1200');"></div>
+      <div class="slide" style="background-image:url('https://www.infobae.com/resizer/v2/SPT35Y22RREGNORTIJ5VIED2XI.jpg?auth=59c4ceca28fabba9d28b58af88e394e1f438285f6c0ff59e2a129499c3a3f190&smart=true&width=992&height=551&quality=85');"></div>
+      <div class="slide" style="background-image:url('https://images.hdqwalls.com/wallpapers/goku-powering-up-le.jpg');"></div>
+    </div>
+
+    <div class="ctrl">
+      <button class="btn" id="prev" aria-label="Anterior">◀</button>
+      <button class="btn" id="next" aria-label="Siguiente">▶</button>
+    </div>
+    <div class="dots" id="dots" aria-label="Paginación"></div>
+  </div>
+
+  <script>
+    const track = document.getElementById('track');
+    const total = track.children.length;
+    const dots = document.getElementById('dots');
+    let i = 0, timer;
+
+    function go(n){
+      i = (n + total) % total;
+      track.style.transform = `translateX(${-i*100}%)`;
+      [...dots.children].forEach((d,idx)=>d.setAttribute('aria-current', idx===i));
+      restart();
+    }
+
+    // Crear dots
+    for(let k=0;k<total;k++){
+      const d=document.createElement('button');
+      d.addEventListener('click',()=>go(k));
+      dots.appendChild(d);
+    }
+    go(0);
+
+    // Flechas
+    document.getElementById('prev').onclick=()=>go(i-1);
+    document.getElementById('next').onclick=()=>go(i+1);
+
+    // Autoplay suave - 5000 milisegundos - 5 segundos
+    function restart(){ clearInterval(timer); timer=setInterval(()=>go(i+1), 5000) }
+    restart();
+    document.getElementById('slider').addEventListener('mouseenter',()=>clearInterval(timer));
+    document.getElementById('slider').addEventListener('mouseleave',restart);
+  </script>
+</body>
+</html>
