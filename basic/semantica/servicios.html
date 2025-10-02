@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicios</title>
+  <link rel="stylesheet" href="estilos2.css"/>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="brand">Mi Página Web</h1>
+    <small>Servicios</small>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a class="active" href="servicios.html">Servicios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <section class="content">
+
+      <!-- SLIDER propio de Servicios -->
+      <div class="card">
+        <div class="slider" id="slider">
+          <div class="track" id="track">
+            <!-- Puede cambiar estas URLs por img/serv1.jpg ... -->
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1600&auto=format&fit=crop')" aria-label="Código"></div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop')" aria-label="Ciberseguridad"></div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=1600&auto=format&fit=crop')" aria-label="Soporte y mantenimiento"></div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=1600&auto=format&fit=crop')" aria-label="Data science"></div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop')" aria-label="Soporte TI"></div>
+          </div>
+          <button class="arrow prev" id="prev" aria-label="Anterior">‹</button>
+          <button class="arrow next" id="next" aria-label="Siguiente">›</button>
+          <div class="dots" id="dots" aria-label="Indicadores"></div>
+        </div>
+      </div>
+
+      <!-- INTRO -->
+      <div class="card">
+        <h2>Soluciones que impulsan su transformación digital</h2>
+        <p>
+          Unimos <strong>programación web</strong>, <strong>ciberseguridad</strong> y tecnologías afines para
+          llevar su proyecto a producción con calidad, rendimiento y seguridad.
+          Trabajamos con metodologías ágiles y buenas prácticas de ingeniería.
+        </p>
+      </div>
+
+      <!-- SERVICIOS -->
+      <div class="card">
+        <div class="grid">
+          <!-- Programación Web -->
+          <div class="col-6 col-md-6">
+            <div class="service">
+              <div class="emoji">💻</div>
+              <div>
+                <h3>Programación Web</h3>
+                <p>Frontend y backend con HTML5, CSS3, JavaScript/TypeScript, React/Angular y Node.js. Arquitecturas limpias, componentes reutilizables y SEO técnico.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Ciberseguridad -->
+          <div class="col-6 col-md-6">
+            <div class="service">
+              <div class="emoji">🛡️</div>
+              <div>
+                <h3>Ciberseguridad</h3>
+                <p>Endurecimiento de servidores, pruebas de penetración a nivel básico, análisis de vulnerabilidades y políticas de seguridad basadas en estándares.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Apps móviles -->
+          <div class="col-6 col-md-6">
+            <div class="service">
+              <div class="emoji">📱</div>
+              <div>
+                <h3>Desarrollo de Apps Móviles</h3>
+                <p>Prototipos y apps cross-platform con buenas prácticas de UI/UX y consumo seguro de APIs.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Ciencia de datos -->
+          <div class="col-6 col-md-6">
+            <div class="service">
+              <div class="emoji">📊</div>
+              <div>
+                <h3>Ciencia de Datos</h3>
+                <p>Dashboards y análisis descriptivo para decisiones basadas en datos. Integración con Python/pandas y visualizaciones claras.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Soporte -->
+          <div class="col-6 col-md-6">
+            <div class="service">
+              <div class="emoji">🔧</div>
+              <div>
+                <h3>Soporte y Mantenimiento</h3>
+                <p>Monitoreo básico, copias de seguridad, actualizaciones y resolución de incidencias para mantener su plataforma estable.</p>
+              </div>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="col-12">
+            <div class="card" style="padding:12px">
+              <strong>¿Listo para comenzar?</strong> Escríbanos y diseñamos un plan a su medida.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2025 Mi Página Web
+  </footer>
+
+  <!-- Slider JS (mismo comportamiento que en inicio) -->
+  <script>
+    const track = document.getElementById('track');
+    const dotsWrap = document.getElementById('dots');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const slides = Array.from(track.children);
+    const n = slides.length;
+    let index = 0;
+    let timer;
+
+    slides.forEach((_, i)=>{
+      const b = document.createElement('button');
+      b.className = 'dot' + (i===0 ? ' active':'');
+      b.addEventListener('click', ()=>go(i,true));
+      dotsWrap.appendChild(b);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function go(i, user=false){
+      index = (i + n) % n;
+      track.style.transform = `translateX(-${index*100}%)`;
+      dots.forEach((d,k)=>d.classList.toggle('active', k===index));
+      if(user){ reset(); }
+    }
+    function nextSlide(){ go(index+1); }
+    function prevSlide(){ go(index-1,true); }
+    function reset(){ clearInterval(timer); timer = setInterval(nextSlide, 4000); }
+
+    next.addEventListener('click', ()=>go(index+1,true));
+    prev.addEventListener('click', prevSlide);
+    reset();
+  </script>
+</body>
+</html>

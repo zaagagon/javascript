@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mi Página | Inicio</title>
+<style>
+  :root{
+    --bg:#0b2f45;
+    --bg-2:#0f4c6b;
+    --accent:#28c8ff;
+    --text:#0b2230;
+    --white:#fff;
+    --muted:#eef4f8;
+    --radius:14px;
+    --shadow:0 10px 24px rgba(0,0,0,.12);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    color:var(--text);
+    background:#f6fafc;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Header fijo */
+  .header{
+    position: sticky; top:0; z-index: 20;
+    background: linear-gradient(90deg, var(--bg), var(--bg-2));
+    color:var(--white);
+    padding:14px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+    box-shadow: var(--shadow);
+  }
+  .brand{font-weight:800; letter-spacing:.3px; margin:0}
+  .header small{opacity:.9}
+
+  /* Layout principal */
+  .main{
+    flex:1;
+    display:flex;
+    gap:16px;
+    padding:16px;
+  }
+
+  /* Sidebar */
+  .side{
+    width:240px; flex:0 0 240px;
+    background:var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding:12px;
+    height: fit-content;
+    position: sticky; top:84px;
+  }
+  .menu{
+    display:flex; flex-direction:column; gap:6px; margin:0; padding:0; list-style:none;
+  }
+  .menu a{
+    display:block;
+    padding:10px 12px;
+    border-radius:10px;
+    text-decoration:none;
+    color:var(--bg);
+    font-weight:600;
+  }
+  .menu a:hover{background:var(--muted)}
+  .menu a.active{background:var(--accent); color:#07364b}
+
+  /* Contenido */
+  .content{
+    flex:1;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow: var(--shadow);
+    padding:16px;
+  }
+
+  /* Slider */
+  .slider{
+    position:relative; overflow:hidden;
+    border-radius:var(--radius);
+    aspect-ratio: 16/9;
+    background:#000;
+  }
+  .track{
+    display:flex; height:100%;
+    transition: transform .5s ease;
+  }
+  .slide{
+    min-width:100%; height:100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+  .slide.s1{ background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop');}
+  .slide.s2{ background-image:url('https://images.unsplash.com/photo-1520975682031-a4a6ec4667f3?q=80&w=1600&auto=format&fit=crop');}
+  .slide.s3{ background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop');}
+
+  /* Flechas */
+  .arrow{
+    position:absolute; top:50%; translate:0 -50%;
+    background: rgba(255,255,255,.85);
+    border:none; width:42px; height:42px; border-radius:50%;
+    display:grid; place-items:center; cursor:pointer;
+  }
+  .arrow:focus{outline:2px solid var(--accent)}
+  .prev{left:10px} .next{right:10px}
+
+  /* Puntos */
+  .dots{
+    position:absolute; inset:auto 0 8px 0;
+    display:flex; justify-content:center; gap:6px;
+  }
+  .dot{width:10px; height:10px; border-radius:50%; background:#ffffff70; border:none; cursor:pointer}
+  .dot.active{background:#fff}
+
+  /* Footer */
+  .footer{
+    background: var(--bg);
+    color: var(--white);
+    text-align:center;
+    padding:16px;
+  }
+
+  /* Responsive: sidebar arriba en móvil */
+  @media (max-width: 860px){
+    .main{flex-direction:column}
+    .side{width:100%; position:static}
+    .menu{flex-direction:row; flex-wrap:wrap}
+    .menu a{flex:1 1 auto; text-align:center}
+  }
+</style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="brand">Mi Página Web</h1>
+    <small>&#128640; Demo con menú lateral + slider</small>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <nav>
+        <ul class="menu">
+          <li><a class="active" href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <section class="content">
+      <!-- SLIDER -->
+      <div class="card">
+        <div class="slider" id="slider">
+          <div class="track" id="track">
+            <div class="slide s1" aria-label="Imagen 1"></div>
+            <div class="slide s2" aria-label="Imagen 2"></div>
+            <div class="slide s3" aria-label="Imagen 3"></div>
+          </div>
+
+          <button class="arrow prev" id="prev" aria-label="Anterior">‹</button>
+          <button class="arrow next" id="next" aria-label="Siguiente">›</button>
+
+          <div class="dots" id="dots" aria-label="Indicadores"></div>
+        </div>
+      </div>
+
+      <!-- TEXTO DEMO -->
+      <div class="card">
+        <h2>Bienvenido</h2>
+        <p>Este es el contenido principal. El menú queda al lado, el header arriba y el footer abajo. El slider es responsive y tiene autoplay.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2025 Mi Página Web
+  </footer>
+
+<script>
+  // Slider simple con autoplay
+  const track = document.getElementById('track');
+  const dotsWrap = document.getElementById('dots');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const slides = Array.from(track.children);
+  const n = slides.length;
+  let index = 0;
+  let timer;
+
+  // Crear puntos
+  slides.forEach((_, i)=>{
+    const b = document.createElement('button');
+    b.className = 'dot' + (i===0 ? ' active':'');
+    b.addEventListener('click', ()=>go(i,true));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function go(i, user=false){
+    index = (i + n) % n;
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle('active', k===index));
+    if(user){ reset(); }
+  }
+  function nextSlide(){ go(index+1); }
+  function prevSlide(){ go(index-1,true); }
+
+  function reset(){
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 4000);
+  }
+
+  next.addEventListener('click', ()=>go(index+1,true));
+  prev.addEventListener('click', prevSlide);
+  reset();
+</script>
+</body>
+</html>

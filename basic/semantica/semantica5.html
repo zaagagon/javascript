@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mi Página | Inicio</title>
+<style>
+  :root{
+    --bg:#0b2f45;
+    --bg-2:#0f4c6b;
+    --accent:#28c8ff;
+    --text:#0b2230;
+    --white:#fff;
+    --muted:#eef4f8;
+    --radius:14px;
+    --shadow:0 10px 24px rgba(0,0,0,.12);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    color:var(--text);
+    background:#f6fafc;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Header fijo */
+  .header{
+    position: sticky; top:0; z-index: 20;
+    background: linear-gradient(90deg, var(--bg), var(--bg-2));
+    color:var(--white);
+    padding:16px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    box-shadow: var(--shadow);
+  }
+  .brand{font-weight:800; letter-spacing:.3px; margin:0}
+  .header small{opacity:.9}
+
+  /* Layout principal */
+  .main{
+    flex:1;
+    display:flex;
+    gap:16px;
+    padding:16px;
+  }
+
+  /* Sidebar más ANCHA y alta */
+  .side{
+    width:300px;                /* ← más ancho */
+    flex:0 0 300px;
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow: var(--shadow);
+    padding:14px;
+    height: fit-content;
+    position: sticky; top:90px;
+  }
+  .menu{
+    display:flex; flex-direction:column; gap:8px; margin:0; padding:0; list-style:none;
+  }
+  .menu a{
+    display:block;
+    padding:12px 14px;
+    border-radius:12px;
+    text-decoration:none;
+    color:var(--bg);
+    font-weight:700;
+  }
+  .menu a:hover{background:var(--muted)}
+  .menu a.active{background:var(--accent); color:#07364b}
+
+  /* Contenido */
+  .content{
+    flex:1;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow: var(--shadow);
+    padding:16px;
+  }
+
+  /* Slider más BAJO */
+  .slider{
+    position:relative; overflow:hidden;
+    border-radius:var(--radius);
+    aspect-ratio: 16/7;         /* más achatado */
+    max-height: 360px;          /* tope de altura */
+    background:#000;
+  }
+  .track{
+    display:flex; height:100%;
+    transition: transform .5s ease;
+  }
+  .slide{
+    min-width:100%; height:100%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+  }
+  /* 6 imágenes (Unsplash como demo; puede cambiarlas por /img/fotoX.jpg) */
+  .s1{background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop')}
+  .s2{background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop')}
+  .s3 { background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'); } /* Playa */
+  .s4{background-image:url('https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1600&auto=format&fit=crop')}
+  .s5 { background-image: url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80'); } /* Campo con flores */
+.s6{background-image:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1600&auto=format&fit=crop')}
+
+  /* Flechas */
+  .arrow{
+    position:absolute; top:50%; translate:0 -50%;
+    background: rgba(255,255,255,.9);
+    border:none; width:40px; height:40px; border-radius:50%;
+    display:grid; place-items:center; cursor:pointer;
+  }
+  .arrow:focus{outline:2px solid var(--accent)}
+  .prev{left:10px} .next{right:10px}
+
+  /* Puntos */
+  .dots{
+    position:absolute; inset:auto 0 8px 0;
+    display:flex; justify-content:center; gap:6px;
+  }
+  .dot{width:10px; height:10px; border-radius:50%; background:#ffffff70; border:none; cursor:pointer}
+  .dot.active{background:#fff}
+
+  /* Footer */
+  .footer{
+    background: var(--bg);
+    color: var(--white);
+    text-align:center;
+    padding:16px;
+  }
+
+  /* Responsive: sidebar arriba en móvil */
+  @media (max-width: 900px){
+    .main{flex-direction:column}
+    .side{width:100%; position:static}
+    .menu{flex-direction:row; flex-wrap:wrap}
+    .menu a{flex:1 1 auto; text-align:center}
+  }
+</style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="brand">Mi Página Web</h1>
+    <small>🚀 Demo con menú lateral + slider</small>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <nav>
+        <ul class="menu">
+          <li><a class="active" href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- CONTENT -->
+    <section class="content">
+      <!-- SLIDER -->
+      <div class="card">
+        <div class="slider" id="slider">
+          <div class="track" id="track">
+            <div class="slide s1" aria-label="Imagen 1"></div>
+            <div class="slide s2" aria-label="Imagen 2"></div>
+            <div class="slide s3" aria-label="Imagen 3"></div>
+            <div class="slide s4" aria-label="Imagen 4"></div>
+            <div class="slide s5" aria-label="Imagen 5"></div>
+            <div class="slide s6" aria-label="Imagen 6"></div>
+          </div>
+          <button class="arrow prev" id="prev" aria-label="Anterior">‹</button>
+          <button class="arrow next" id="next" aria-label="Siguiente">›</button>
+          <div class="dots" id="dots" aria-label="Indicadores"></div>
+        </div>
+      </div>
+
+      <!-- TEXTO: poder de HTML + CSS + hojas de estilo -->
+      <article class="card">
+        <h2>El poder de HTML y CSS con hojas de estilo</h2>
+        <p>
+          Con <strong>HTML</strong> definimos la estructura y el contenido de una página (títulos, párrafos, menús, formularios).
+          Con <strong>CSS</strong> controlamos su presentación (colores, tamaños, espaciados, layouts responsivos).
+          Al separar los estilos en una <strong>hoja de estilo</strong> externa, el mismo diseño se aplica a
+          todas las páginas, lo que mejora el rendimiento, la coherencia visual y el mantenimiento del sitio.
+        </p>
+        <p>
+          Este ejemplo usa <em>Flexbox</em> para el layout, variables CSS para una paleta consistente,
+          y componentes reutilizables (<code>.card</code>, <code>.menu</code>, <code>.slider</code>).
+          Así puede crecer su sitio sin perder orden ni estilo.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    &copy; 2025 Mi Página Web
+  </footer>
+
+<script>
+  // Slider simple con autoplay y 6 imágenes
+  const track = document.getElementById('track');
+  const dotsWrap = document.getElementById('dots');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const slides = Array.from(track.children);
+  const n = slides.length;
+  let index = 0;
+  let timer;
+
+  // Crear puntos
+  slides.forEach((_, i)=>{
+    const b = document.createElement('button');
+    b.className = 'dot' + (i===0 ? ' active':'');
+    b.addEventListener('click', ()=>go(i,true));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function go(i, user=false){
+    index = (i + n) % n;
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle('active', k===index));
+    if(user){ reset(); }
+  }
+  function nextSlide(){ go(index+1); }
+  function prevSlide(){ go(index-1,true); }
+
+  function reset(){
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 4000);
+  }
+
+  next.addEventListener('click', ()=>go(index+1,true));
+  prev.addEventListener('click', prevSlide);
+  reset();
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejemplo Layout Lateral</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column; /* Para que header y footer estén arriba/abajo */
+    }
+
+    /* Encabezado */
+    .header {
+      background: #005f99;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Zona principal: menú + contenido */
+    .main {
+      flex: 1; /* ocupa todo el espacio disponible */
+      display: flex; /* divide en columnas */
+    }
+
+    /* Menú lateral */
+    .menu {
+      width: 200px;
+      background: #007acc;
+      display: flex;
+      flex-direction: column; /* enlaces uno debajo del otro */
+      padding: 10px;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      margin: 4px 0;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .menu a:hover {
+      background: #004466;
+    }
+
+    /* Contenido */
+    .contenido {
+      flex: 1; /* ocupa todo lo que queda */
+      background: #f9f9f9;
+      padding: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #005f99;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Mi Página Web</h1>
+  </div>
+
+  <div class="main">
+    <div class="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Servicios</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <div class="contenido">
+      <h2>Página en construcción</h2>
+      <p>Aquí va el contenido principal.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Mi Página Web
+  </div>
+</body>
+</html>

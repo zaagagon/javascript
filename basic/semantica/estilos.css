@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    background: #005f99;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+  }
+  .menu {
+    width: 200px;
+    background: #007acc;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 4px 0;
+    border-radius: 6px;
+    transition: background 0.3s;
+  }
+  .menu a:hover {
+    background: #004466;
+  }
+  .contenido {
+    flex: 1;
+    background: #f9f9f9;
+    padding: 20px;
+  }
+  .footer {
+    background: #005f99;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  
