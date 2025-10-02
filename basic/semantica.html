@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .contenedor{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        /*encabezado*/
+        .header{
+
+            background: #005f99;
+            color: rgb(224, 233, 219);
+            padding: 20px;
+            text-align: center;
+
+        }
+
+        .menu {
+            background: cyan;
+            padding:  10px;
+            justify-content: center;
+            gap: 20px;
+            display: flex;
+        }
+
+        .menu a{
+            color: #00334d;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 8px;
+            
+        }
+
+        .menu a:hoover{
+            background: #b3ffff;
+        }
+
+        .contenido{
+            flex: 1;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        .footer{
+            background: #005f99;
+            color: aliceblue;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="header">
+            <h1>Mi Pagina  Web</h1>
+        </div>
+        <div class="menu">
+            <a href="#">Inicio</a>
+            <a href="#">Productos</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </div>
+        <div class="contenido">
+            <h2>Pagina en construcción</h2>
+        </div>
+        <div class="footer"> &copy; 2025 Mi Página Web</div>
+    </div>
+    
+</body>
+</html>

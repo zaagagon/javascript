@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo con Div y Menú</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Contenedor general */
+    .contenedor {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Encabezado */
+    .header {
+      background: #005f99;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Menú */
+    .menu {
+      background: #007acc;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .menu a:hover {
+      background: #004466;
+    }
+
+    /* Contenido */
+    .contenido {
+      flex: 1;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    /* Pie de página */
+    .footer {
+      background: #005f99;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="header">
+      <h1>Mi Página Web</h1>
+    </div>
+
+    <div class="menu">
+      <a href="#">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Servicios</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <div class="contenido">
+      <h2>Bienvenido</h2>
+      <p>Este es un ejemplo de cómo usar <b>div</b> y un menú con clases en CSS.</p>
+      <p>El contenido principal va aquí.</p>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 Mi Página Web
+    </div>
+  </div>
+</body>
+</html>
