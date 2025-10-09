@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diferencias entre innerHTML, innerText y textContent</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 20px;
+    }
+    .resultado {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #f9f9f9;
+    }
+    button {
+      margin-right: 8px;
+      padding: 6px 12px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Comparando innerHTML, innerText y textContent</h2>
+  <p id="demo" class="resultado">Texto original</p>
+
+  <button onclick="usarInnerHTML()">innerHTML</button>
+  <button onclick="usarInnerText()">innerText</button>
+  <button onclick="usarTextContent()">textContent</button>
+
+  <script>
+    const demo = document.getElementById("demo");
+
+    // 🧩 innerHTML interpreta etiquetas HTML
+    const usarInnerHTML = () => {
+      demo.innerHTML = "Hola <b>Neo</b>, <i>soy innerHTML</i> 😎";
+    };
+
+    // 🧩 innerText muestra el texto tal cual, sin interpretar etiquetas
+    const usarInnerText = () => {
+      demo.innerText = "Hola <b>Neo</b>, soy innerText 😅";
+    };
+
+    // 🧩 textContent también ignora el HTML, pero incluye incluso texto oculto
+    const usarTextContent = () => {
+      demo.textContent = "Hola <b>Neo</b>, soy textContent 🤖";
+    };
+  </script>
+</body>
+</html>
