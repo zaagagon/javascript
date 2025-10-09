@@ -5,3 +5,4 @@ function holamundo() {
 }
 
 //llamamos la funcion
+holamundo();
