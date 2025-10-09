@@ -9,7 +9,16 @@
     <p id="mensaje"></p>
     <script>
         const mensaje= document.getElementById("mensaje");
-        
+     //cambiar contenido
+     mensaje.innerHTML=" esto es una ddddeba"   
+     //cambiar color 
+     mensaje.style.color= "blue"
+     
+     setTimeout(()=>{
+         mensaje.innerHTML="texto cambiado"
+         mensaje.style.color= "green"
+
+     },3000)
     </script>
 </body>
 </html>
