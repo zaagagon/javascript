@@ -1,0 +1,10 @@
+/* Header */
+
+.header{
+    position: sticky; top:0; z-index: 20;
+    background: linear-gradient(90deg, var(--bg), var(--bg-2));
+    color:var(--white);
+    padding:16px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+    box-shadow: var(--shadow);
+  }
