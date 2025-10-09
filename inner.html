@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Practicando</title>
 </head>
 <body>
-    
+    <input type="number" id="n1" placeholder="Digite Numero 1">
+    <br>
+    <br>
+    <input type="number" id="n2" placeholder="Digite Numero 2">
+    <br><br>
+    <button onclick="sumar()">Sumar</button>
+    <p id="resultado"></p>
+    <script>
+
+        const sumar=()=>{
+            const a= parseInt(document.getElementById("n1").value);
+            const b= parseInt(document.getElementById("n2").value);
+            document.getElementById("resultado").innerHTML=`Resultado de la Suma: ${a+b}`;
+        }
+    </script>
 </body>
 </html>
